@@ -1,0 +1,7 @@
+#artwork-detail {
+    width: 1440px;
+    height: 1024px;
+    background: #242319;
+    display: flex;
+    flex-direction: row;
+}
