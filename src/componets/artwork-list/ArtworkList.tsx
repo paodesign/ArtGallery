@@ -1,28 +1,19 @@
-import { useEffect, useState } from 'react'
-import { Artwork } from '../../models/artwork';
-// import { ArtworkDetail } from '../artwork-detail/ArtworkDetail';
+import useFetchArtworks from '../../hooks/useFetchArtworks';
+import { ArtworkItem } from '../index';
 
 
-function ArtworkList() {
-
-    const [artworks, setArtworks] = useState<Array<Artwork>>([{ id: '1', title: 'miobra' }, { id: '2', title: 'miobra2' }])
-
-    useEffect(() => {
-        //fetch from api
-
-    }, [artworks]);
-
+export function ArtworkList() {
+    const { artworks, isLoading } = useFetchArtworks();
 
     return (
-        <>
-            <ul>
-                {
-                    artworks?.map(aw => {
-                        return <li key={aw.id}>{aw.title}</li>
-                    })}
-            </ul>
-        </>
+        <div className='card-grid'>
+            {
+                artworks?.map(aw => (
+                    <ArtworkItem
+                        artwork={aw}
+                    />
+                ))
+            }
+        </div>
     )
-}
-
-export default ArtworkList
+};

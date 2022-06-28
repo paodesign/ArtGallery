@@ -1,5 +1,9 @@
 
 export interface Artwork{
-    id: string;
+    id: number;
     title: string;
+    date_end: number,
+    publication_history: string,
+    artist_title:string
+
 }

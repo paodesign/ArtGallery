@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './styles.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AppTheme from './theme/AppTheme';
 
 const divRoot: HTMLElement = document.getElementById('root') as HTMLElement;
 const root = ReactDOM.createRoot(divRoot);
 
 root.render(
   <React.StrictMode>
+
+
     <App />
+  
   </React.StrictMode>
 );
 
