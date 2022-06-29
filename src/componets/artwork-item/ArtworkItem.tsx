@@ -11,16 +11,16 @@ export function ArtworkItem({artwork}:Props) {
   return (
     <div className="card">
 
-    <Card sx={{ maxWidth: 345 }} >
+    <Card sx={{ maxWidth: 400 }} >
     <CardActionArea>
       <CardMedia
         component="img"
-        height="140"
+        height="175"
         image={"https://via.placeholder.com/150x200"}
         alt="green iguana"
       />
       <CardContent >
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           {artwork.title}
         </Typography>
         <Typography variant="body2" color="text.secondary">

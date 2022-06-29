@@ -1,6 +1,6 @@
 
 import { Search } from '@mui/icons-material';
-import { Button, TextField } from '@mui/material';
+import { Button, Grid, TextField } from '@mui/material';
 import React, { ChangeEvent, Component, FormEvent, useState } from 'react'
 
 type Props = {
@@ -28,25 +28,42 @@ function Searcher({ onSearch }: Props) {
 
     return (
         <>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <TextField
-                        id="outlined-basic"
-                        label="Buscar Obra"
-                        variant="outlined"
-                        type="text"
-                        value={query}
-                        onChange={handleInputChange}
-                    />
-                    <Button
-                        variant="outlined"
-                        type="submit"
-                    >
-                        <Search />
-                    </Button>
+            <form onSubmit={handleSubmit}>
 
-                </form>
-            </div>
+                <Grid
+                    container
+                    direction={'row'}
+                    spacing={1}
+                    justifyContent={'center'}
+                    sx={{ mb: 5, width: '100vh', backgroundColor: 'white' }}
+                >
+
+                    <Grid item>
+                        <TextField className='outlined-color'
+                            id="outlined-basic"
+                            label="Buscar Obra"
+                            variant="outlined"
+                            type="text"
+                            value={query}
+                            onChange={handleInputChange}
+                        />
+
+                    </Grid>
+                    <Grid item>
+                        <Button
+
+                            fullWidth
+                            variant="outlined"
+                            type="submit"
+                        >
+                            <Search />
+                        </Button>
+                    </Grid>
+
+                </Grid>
+
+            </form>
+
         </>
     )
 }
