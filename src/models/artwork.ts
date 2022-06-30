@@ -4,6 +4,8 @@ export interface Artwork{
     title: string;
     date_end: number,
     publication_history: string,
-    artist_title:string
+    artist_title:string,
+    image_id: string
+
 
 }

@@ -1,13 +1,58 @@
 
 import { Search } from '@mui/icons-material';
-import { Button, Grid, TextField } from '@mui/material';
+import { alpha, AppBar, Box, Button, Grid, IconButton, InputBase, styled, TextField, Toolbar, Typography } from '@mui/material';
 import React, { ChangeEvent, Component, FormEvent, useState } from 'react'
+import SearchIcon from '@mui/icons-material/Search';
+
+const SearchStyle = styled('div')(({ theme }) => ({
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    '&:hover': {
+        backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: '600px',
+    [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(1),
+        width: 'auto',
+    },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+}));
+
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: 'inherit',
+    '& .MuiInputBase-input': {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            width: '12ch',
+            '&:focus': {
+                width: '20ch',
+            },
+        },
+    },
+}));
+
 
 type Props = {
     onSearch: (query: string) => void;
 }
 
-function Searcher({ onSearch }: Props) {
+export function Searcher({ onSearch }: Props) {
 
     const [query, setQuery] = useState<string>('');
     const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -23,50 +68,22 @@ function Searcher({ onSearch }: Props) {
         setQuery('');
     }
 
-
-
-
     return (
-        <>
-            <form onSubmit={handleSubmit}>
 
-                <Grid
-                    container
-                    direction={'row'}
-                    spacing={1}
-                    justifyContent={'center'}
-                    sx={{ mb: 5, width: '100vh', backgroundColor: 'white' }}
-                >
+        <form onSubmit={handleSubmit}>
 
-                    <Grid item>
-                        <TextField className='outlined-color'
-                            id="outlined-basic"
-                            label="Buscar Obra"
-                            variant="outlined"
-                            type="text"
-                            value={query}
-                            onChange={handleInputChange}
-                        />
-
-                    </Grid>
-                    <Grid item>
-                        <Button
-
-                            fullWidth
-                            variant="outlined"
-                            type="submit"
-                        >
-                            <Search />
-                        </Button>
-                    </Grid>
-
-                </Grid>
-
-            </form>
-
-        </>
+            <SearchStyle>
+                <StyledInputBase
+                    sx={{ ml: 1, flex: 1 }}
+                    placeholder="Search"
+                    inputProps={{ 'aria-label': 'search google maps' }}
+                    onChange={handleInputChange}
+                    value={query}
+                />
+                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+                    <SearchIcon />
+                </IconButton>
+            </SearchStyle>
+        </form>
     )
 }
-
-
-export default Searcher

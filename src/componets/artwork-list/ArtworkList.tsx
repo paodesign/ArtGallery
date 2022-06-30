@@ -1,24 +1,33 @@
-import { Grid } from '@mui/material';
+import { Container, Grid, Pagination } from '@mui/material';
+import { useState } from 'react';
 import useFetchArtworks from '../../hooks/useFetchArtworks';
 import { ArtworkItem } from '../index';
 
+type Props = {
+    query: string;
+}
 
-export function ArtworkList() {
+export function ArtworkList({query}:Props) {
 
-    const { artworks, isLoading } = useFetchArtworks();
+    const [page, setPage] = useState(1);
+    const { artworks, isLoading, paginator } = useFetchArtworks(query, page);
+
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+    };
 
     return (
-        <div >
+        <Container maxWidth='lg'>
             <Grid
                 container
                 direction="column"
             >
                 <Grid item
                     className='card-grid'
-                    xs={3}
-                    md={5}
-                    lg={5}
-
+                    xs={12}
+                    md={6}
+                    lg={3}
+                    xl={3}
                 >
                     {
                         artworks?.map(aw => (
@@ -30,6 +39,7 @@ export function ArtworkList() {
                     }
                 </Grid>
             </Grid>
-        </div>
+            <Pagination count={paginator.total_pages} page={page} onChange={handleChange} size="large" />
+        </Container>
     )
 };
