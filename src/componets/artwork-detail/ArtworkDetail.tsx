@@ -9,7 +9,6 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 500,
   bgcolor: 'background.paper',
   borderRadius: '10px',
   p: 4
@@ -52,15 +51,8 @@ export const ArtworkDetail = ({ artworkId, onModalClose }: Props) => {
       onClose={handleModalClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
-      sx={{
-        width: '400',
-        height:'300',
-         margin: 'auto',
-        "&::-webkit-scrollbar": { width: 20},
-        "&::-webkit-scrollbar-track": { backgroundColor: 'orange' },
-        "&::-webkit-scrollbar-thumb": { backgroundColor:'red',
-        borderRadius: 2} }}
       
+
     >
       <Box sx={style}>
         {
@@ -72,22 +64,28 @@ export const ArtworkDetail = ({ artworkId, onModalClose }: Props) => {
               alt={"texto alt"}
             />
         }
-        <Typography id="modal-title" variant="button" gutterBottom>
+        <Typography
+          fontFamily={'Montserrat'}
+          id="modal-title"
+          variant="subtitle1"
+          gutterBottom>
           {artwork.title}
         </Typography>
 
 
         <Box component={Paper} >
 
-          <Typography paragraph  sx={{ mt: 2 }}>
+          <Typography paragraph
+            fontFamily={'Montserrat'}
+            sx={{ mt: 2 }}>
             {artwork.publication_history}
           </Typography>
         </Box>
 
 
-      <Box component="span" m={2}>
+        <Box component="span" m={2}>
+        </Box>
       </Box>
-    </Box>
     </Modal >
   )
 }

@@ -17,7 +17,7 @@ export function ArtworkList({query}:Props) {
     };
 
     return (
-        <Container maxWidth='lg'>
+        <Container maxWidth='xl'>
             <Grid
                 container
                 direction="column"
@@ -39,7 +39,9 @@ export function ArtworkList({query}:Props) {
                     }
                 </Grid>
             </Grid>
-            <Pagination count={paginator.total_pages} page={page} onChange={handleChange} size="large" />
+
+            <Pagination count={paginator.total_pages} page={page} onChange={handleChange} size="large" color="secondary" className="pagination-center "/>
+    
         </Container>
     )
 };

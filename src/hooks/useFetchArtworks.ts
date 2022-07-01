@@ -11,7 +11,7 @@ interface APIResponse {
 const useFetchArtworks = (query?: string, page = 1):{artworks: Array<Artwork>, isLoading: Boolean, paginator: Pagination} => {
     const [artworks, setArtworks] = useState<Array<Artwork>>([]);
     const [isLoading, setIsLoading] = useState<Boolean>(true);
-    const [paginator, setPaginator ] = useState<Pagination>({limit: 12, current_page: page} as Pagination);
+    const [paginator, setPaginator ] = useState<Pagination>({limit: 8, current_page: page} as Pagination);
     
     useEffect(() => {
         const urlApiAll = `https://api.artic.edu/api/v1/artworks?page=${page}&limit=${paginator.limit}&fields=${fields}`;

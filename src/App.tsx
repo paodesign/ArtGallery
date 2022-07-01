@@ -5,22 +5,18 @@ import './App.css';
 import { Container, Grid } from '@mui/material';
 import { ArtworkList, HeaderGallery, Searcher } from './componets/index';
 
-const handleSearch = (qurey: string) => {
-  //Fetch api to retrieve artworks
-}
-
-
 function App() {
   const [query, setQuery] = useState("");
+  const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
 
   return (
-    <AppTheme>
+    <AppTheme mode={mode}>
       <Grid
         container
         direction="column"
         sx={{ minHeigt: '100vh', marginRight: '100vh', backgroundColor: 'primary.main' }}
       >
-        <HeaderGallery >
+        <HeaderGallery onThemeChange={setMode}>
           <Searcher onSearch={setQuery} />
         </HeaderGallery>
         <Home />
@@ -30,7 +26,7 @@ function App() {
         direction="column"
         sx={{ minHeigt: '100vh', marginRight: '100vh', backgroundColor: 'primary.main' }}
       >
-        <ArtworkList query={query}/>
+        <ArtworkList query={query} />
       </Grid>
     </AppTheme>
   );

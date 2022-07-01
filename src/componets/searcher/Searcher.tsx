@@ -19,16 +19,6 @@ const SearchStyle = styled('div')(({ theme }) => ({
     },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
-
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
@@ -39,9 +29,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            width: '12ch',
+            width: '15ch',
             '&:focus': {
-                width: '20ch',
+                width: '30ch',
             },
         },
     },
@@ -64,14 +54,12 @@ export function Searcher({ onSearch }: Props) {
         if (query.trim().length <= 1) return;
 
         onSearch(query);
-        console.log('Serach criteria: ', query)
         setQuery('');
     }
 
     return (
 
         <form onSubmit={handleSubmit}>
-
             <SearchStyle>
                 <StyledInputBase
                     sx={{ ml: 1, flex: 1 }}
@@ -80,8 +68,8 @@ export function Searcher({ onSearch }: Props) {
                     onChange={handleInputChange}
                     value={query}
                 />
-                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-                    <SearchIcon />
+                <IconButton color="secondary" type="submit" sx={{ p: '10px' }} aria-label="search">
+                    <SearchIcon/>
                 </IconButton>
             </SearchStyle>
         </form>
