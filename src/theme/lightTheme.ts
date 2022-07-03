@@ -13,6 +13,10 @@ export const lightTheme = createTheme({
         },
         error: {
             main: red.A400
+        },
+        text: {
+            primary: '#121212',
+            secondary: '#D69D66',
         }
     }
 })

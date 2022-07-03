@@ -13,6 +13,10 @@ export const darkTheme = createTheme({
         },
         error: {
             main: red.A400
+        },
+        text: {
+            primary: '#fff',//white
+            secondary: '#D69D66',
         }
     }
 })
