@@ -1,13 +1,12 @@
 
-import { autocompleteClasses, Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, CircularProgress, Collapse, Dialog, Grid, IconButton, IconButtonProps, ListItemSecondaryAction, Modal, Paper, styled, Typography } from '@mui/material';
-import React, { useState } from 'react'
+import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, IconButtonProps, Modal, styled, Typography } from '@mui/material';
+import { useState } from 'react'
 import useFetchArtworkById from '../../hooks/useFetchArtworkById';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CloseIcon from '@mui/icons-material/Close';
-
-
+import { Spinner } from '../spinner/Spinner';
 
 const styleScroll = {
   '*::-webkit-scrollbar': {
@@ -22,7 +21,6 @@ const styleScroll = {
   },
   '*::-webkit-scrollbar-thumb:hover': {
     backgroundColor: ' #b30000',
-
   }
 
 }
@@ -51,7 +49,7 @@ export const ArtworkDetail = ({ artworkId, onModalClose }: Props) => {
 
   const [openModal, setOpenModal] = useState(true);
   const { artwork, isLoading } = useFetchArtworkById(artworkId);
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const handleModalClose = () => {
     setOpenModal(false);
@@ -62,103 +60,100 @@ export const ArtworkDetail = ({ artworkId, onModalClose }: Props) => {
     setExpanded(!expanded);
   };
 
-  return (    
-    <Modal 
+  return (
+    <Modal sx={{ overflow: 'scroll', overflowX: 'hidden' }}
       open={openModal}
       onClose={handleModalClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
+      <Spinner show={isLoading}>
+        <Card sx={{ maxWidth: 800, mr: 'auto', ml: 'auto', mt: '5%' }}>
+          <CardHeader
+            avatar={
+              <Avatar
+                aria-label="recipe"
+                src="/broken-image.jpg"
+                sx={{ bgcolor: '#D69D66' }}
+              />
+            }
+            action={
+              <IconButton
+                aria-label="settings"
+                onClick={handleModalClose}
+              >
+                <CloseIcon />
+              </IconButton>
+            }
+            title={artwork.artist_title}
+            subheader={artwork.date_end}
+          />
+          <CardMedia
+            component='img'
+            image={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`}
+            alt={artwork.title}
+          />
 
-      <Card sx={{ maxWidth: 800, mr: 'auto',ml:'auto', mt:'5px'}}>
-        <CardHeader
-          avatar={
-            <Avatar
-              aria-label="recipe"
-              src="/broken-image.jpg"
-              sx={{ bgcolor: '#D69D66' }}
-            />
-          }
-          action={
-            <IconButton 
-            aria-label="settings"
-            onClick={handleModalClose}
-            >
-              <CloseIcon/>
-            </IconButton>
-          }
-          title={artwork.artist_title}
-          subheader={artwork.date_end}
-        />
-        {
-          isLoading ? <CircularProgress /> :
-            <CardMedia
-              component="img"
-              height="600"
-              image={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`}
-              alt={"texto alt"}
-            />
-        }
-
-        <CardContent>
-          <Typography
-            fontFamily={'Montserrat'}
-            fontWeight={'800'}
-            fontSize={'x-large'}
-            id="modal-title"
-            variant="subtitle1"
-            gutterBottom
-            color='text.secondary'
-          >
-            {artwork.title}
-          </Typography>
-        </CardContent>
-
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          {artwork.publication_history ?
-            <ExpandMore
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              <ExpandMoreIcon />
-            </ExpandMore>
-            : null
-          }
-        </CardActions>
-        <Collapse
-          in={expanded}
-          timeout="auto"
-          unmountOnExit
-        >
-          <CardContent sx={styleScroll}>
-            <Typography paragraph
-              fontFamily={'Montserrat'}
-              fontWeight={'600'}
-            >
-              Detalle de la Obra:
-            </Typography>
+          <CardContent>
             <Typography
-              paragraph
-              whiteSpace={'break-spaces'}
               fontFamily={'Montserrat'}
-              fontWeight={'600'}
-              lineHeight={'1.2'}
-              fontSize={'initial'}
-              color="pallete.text.primary"
-              sx={{ mt: 2, height: 260, overflow: 'scroll', overflowX: 'hidden' }}>
-              {artwork.publication_history}
+              fontWeight={'800'}
+              fontSize={'x-large'}
+              id="modal-title"
+              variant="subtitle1"
+              gutterBottom
+              color='text.secondary'
+            >
+              {artwork.title}
             </Typography>
           </CardContent>
-        </Collapse>
-      </Card>
+
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon />
+            </IconButton>
+            {artwork.publication_history ?
+              <ExpandMore
+                expand={expanded}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+              >
+                <ExpandMoreIcon />
+              </ExpandMore>
+              : null
+            }
+          </CardActions>
+          <Collapse
+            in={expanded}
+            timeout="auto"
+            unmountOnExit
+          >
+            <CardContent sx={styleScroll}>
+              <Typography paragraph
+                fontFamily={'Montserrat'}
+                fontWeight={'600'}
+              >
+                Detalle de la Obra:
+              </Typography>
+              <Typography
+                paragraph
+                whiteSpace={'break-spaces'}
+                fontFamily={'Montserrat'}
+                fontWeight={'600'}
+                lineHeight={'1.2'}
+                fontSize={'initial'}
+                color="pallete.text.primary"
+                dangerouslySetInnerHTML={{ __html: artwork.publication_history }}
+                sx={{ mt: 2, height: 260, overflow: 'scroll', overflowX: 'hidden' }}>
+              </Typography>
+            </CardContent>
+          </Collapse>
+        </Card>
+      </Spinner>
     </Modal >
   )
 }

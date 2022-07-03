@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Artwork } from "../models/artwork";
 
-
-
 interface APIResponse {
     
     data: Artwork
@@ -32,9 +30,7 @@ const useFetchArtworkById = (artworkId: number):{artwork:Artwork, isLoading:Bool
 
     }, []);
 
-
     return {
-
         artwork:artwork,
         isLoading
     }

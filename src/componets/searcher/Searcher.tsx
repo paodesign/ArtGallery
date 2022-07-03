@@ -1,7 +1,6 @@
 
-import { Search } from '@mui/icons-material';
-import { alpha, AppBar, Box, Button, Grid, IconButton, InputBase, styled, TextField, Toolbar, Typography } from '@mui/material';
-import React, { ChangeEvent, Component, FormEvent, useState } from 'react'
+import { alpha,  IconButton, InputBase, styled } from '@mui/material';
+import { ChangeEvent, FormEvent, useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 
 const SearchStyle = styled('div')(({ theme }) => ({

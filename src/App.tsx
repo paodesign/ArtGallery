@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Home from './componets/home/Home';
 import AppTheme from './theme/AppTheme';
-import './App.css';
-import { Container, Grid } from '@mui/material';
+import {  Grid } from '@mui/material';
 import { ArtworkList, HeaderGallery, Searcher } from './componets/index';
+import './App.css';
 
 function App() {
   const [query, setQuery] = useState("");
-  const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
 
   return (
     <AppTheme mode={mode}>
