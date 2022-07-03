@@ -1,4 +1,4 @@
-import { Button, Card, CardActionArea, CardActions, CardContent, CardMedia, Fab, Typography } from '@mui/material'
+import {  Card, CardActionArea, CardActions, CardContent, CardMedia, Fab, Typography } from '@mui/material'
 import { useState } from 'react'
 import { Artwork } from '../../models/artwork'
 import { ArtworkDetail } from '../artwork-detail/ArtworkDetail'

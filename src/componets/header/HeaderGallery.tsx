@@ -1,8 +1,8 @@
-import { AppBar, Box, FormControlLabel, FormGroup, IconButton, Switch, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box,  IconButton, Toolbar, Typography } from "@mui/material";
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
-import { Searcher } from '../index';
+import { useTheme } from '@mui/material/styles';
+
 
 type Props = {
     onThemeChange: React.Dispatch<React.SetStateAction<'light' | 'dark'>>;
