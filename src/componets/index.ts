@@ -4,3 +4,4 @@ export * from './artwork-list/ArtworkList';
 export * from './artwork-detail/ArtworkDetail';
 export * from './artwork-item/ArtworkItem';
 export * from './header/HeaderGallery';
+export * from './spinner/Spinner';
