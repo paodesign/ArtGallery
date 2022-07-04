@@ -58,6 +58,8 @@ En cambio, copiará todos los archivos de configuración y las dependencias tran
 
 </ul>
 
+***
+
 ## Leer más
 
 Puedes aprender más en el [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
