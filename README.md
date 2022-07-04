@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+# Art Gallery React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## El proyecto se puede ver: [ArtGallery](https://paodesign.github.io/ArtGallery/)  :mag_right:
+
+***
 
 ## Available Scripts
 
-In the project directory, you can run:
+En el directorio del proyecto, puedes correrlo:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ejecuta la aplicación en el modo de desarrollo.\
+Abrir [http://localhost:3000](http://localhost:3000) para verlo en el navegador o mobile.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+La página se volverá a cargar si realiza modificaciones.\
+También verá cualquier error de pelusa en la consola.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Construye la aplicación para producción en la carpeta `build`.\
+Empaqueta correctamente React en modo de producción y optimiza la compilación para obtener el mejor rendimiento.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+La compilación se minimiza y los nombres de archivo incluyen los hashes.\
+Su aplicación está lista para ser implementada!
 
-### `npm run eject`
+Consulte la sección sobre [deployment](https://facebook.github.io/create-react-app/docs/deployment) para más información.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Si no está satisfecho con la herramienta de compilación y las opciones de configuración, puede "expulsar" en cualquier momento. Este comando eliminará la dependencia de compilación única de su proyecto.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+En cambio, copiará todos los archivos de configuración y las dependencias transitivas (webpack, Babel, ESLint, etc.) directamente en su proyecto para que tenga control total sobre ellos. Todos los comandos, excepto "expulsar", seguirán funcionando, pero apuntarán a los scripts copiados para que pueda modificarlos. En este punto estás solo.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+***
 
-## Learn More
+## Funcionamiento de la App
+<ul>
+<li> Cuenta con la funcionalidad de mostrar las fotografías desde la API.</li>
+<li> Cuenta con un buscador de obras de arte.</li>
+<li>Cuenta con la funcionalidad de mostrar el detalle de la obra al hacer click sobre la misma.</li>
+<li>Cuenta con un paginador.</li>
+<li>Cuenta con la funcionalidad de cambio de modo dark y light. </li>
+</ul>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+***
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Leer más
+
+Puedes aprender más en el [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+Para aprender React, echa un vistazo a la [React documentation](https://reactjs.org/).
+
+![CI/CD](https://github.com/paodesign/ArtGallery/workflows/publish/badge.svg)
+
+
+
+
